@@ -1,13 +1,107 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>My Site</title>
-    <link rel="stylesheet" href="style.css" />
+    <meta name="description" content="A simple modern GitHub Pages site." />
+    <title>My GitHub Pages Site</title>
+
+    <!-- Social preview (optional but nice) -->
+    <meta property="og:title" content="My GitHub Pages Site" />
+    <meta property="og:description" content="Deployed with GitHub Pages." />
+    <meta property="og:type" content="website" />
+
+    <!-- Favicon (optional). Put favicon.svg in the same folder -->
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+
+    <!-- Your CSS (optional). Create style.css in the same folder -->
+    <link rel="stylesheet" href="./style.css" />
   </head>
+
   <body>
-    <h1>Hello GitHub Pages</h1>
-    <script src="script.js"></script>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container">
+        <h1 class="site-title">My GitHub Pages Site</h1>
+        <p class="site-subtitle">Fast • Simple • Deployed from VS Code</p>
+
+        <nav class="site-nav" aria-label="Primary">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="container">
+      <section id="about" class="card">
+        <h2>About</h2>
+        <p>
+          This page is running from <strong>GitHub Pages</strong>. Edit your files in VS Code,
+          commit, push, and your site updates automatically.
+        </p>
+        <button id="actionBtn" type="button">Click me</button>
+        <p id="status" role="status" aria-live="polite"></p>
+      </section>
+
+      <section id="projects" class="card">
+        <h2>Projects</h2>
+        <ul>
+          <li><a href="#" rel="noopener">Project One</a></li>
+          <li><a href="#" rel="noopener">Project Two</a></li>
+          <li><a href="#" rel="noopener">Project Three</a></li>
+        </ul>
+      </section>
+
+      <section id="contact" class="card">
+        <h2>Contact</h2>
+        <form id="contactForm">
+          <label>
+            Name
+            <input name="name" autocomplete="name" required />
+          </label>
+
+          <label>
+            Message
+            <textarea name="message" rows="4" required></textarea>
+          </label>
+
+          <button type="submit">Send</button>
+          <p class="hint">This demo form won’t email yet—it's just to show it works.</p>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <small>© <span id="year"></span> Your Name • Hosted on GitHub Pages</small>
+      </div>
+    </footer>
+
+    <!-- Your JS (optional). Create script.js in the same folder -->
+    <script src="./script.js" defer></script>
+
+    <!-- If you don't want a separate script.js, you can keep this inline JS instead -->
+    <script>
+      // basic "it works" checks
+      window.addEventListener("DOMContentLoaded", () => {
+        const year = document.getElementById("year");
+        if (year) year.textContent = String(new Date().getFullYear());
+
+        const btn = document.getElementById("actionBtn");
+        const status = document.getElementById("status");
+
+        btn?.addEventListener("click", () => {
+          if (status) status.textContent = "✅ Button works. Your JS is running!";
+        });
+
+        const form = document.getElementById("contactForm");
+        form?.addEventListener("submit", (e) => {
+          e.preventDefault();
+          if (status) status.textContent = "✅ Form submitted (demo).";
+        });
+      });
+    </script>
   </body>
 </html>
